@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Personal Portfolio Home</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#13b6ec",
+              "background-light": "#f6f8f8",
+              "background-dark": "#101d22",
+              "surface-dark": "#1c1e20",
+              "border-dark": "#262a2e",
+              "text-muted": "#959BA1",
+              "text-bright": "#E0E3E6",
+              "card-dark": "#161b1e",
+            },
+            fontFamily: {
+              display: ["Inter"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .form-input:focus {
+        border-color: #13b6ec !important;
+        box-shadow: 0 0 0 1px #13b6ec !important;
+      }
+    </style>
+    <style type="text/tailwindcss">
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      #theme-toggle .light-icon {
+        display: block;
+      }
+      #theme-toggle .dark-icon {
+        display: none;
+      }
+      .dark #theme-toggle .light-icon {
+        display: none;
+      }
+      .dark #theme-toggle .dark-icon {
+        display: block;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-300"
+  >
+    <!-- Top Navigation Bar -->
+    <header
+      class="fixed top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between"
+      >
+        <!-- Mobile component -->
+        <div
+          class="hidden md:hidden lg:hidden w-[90vw] flex flex-col justify-center absolute py-10 top-[75px] left-6 z-100000 bg-[#161b1e]font-display text-white rounded-xl"
+          id="mobile_menu"
+        >
+          <ul class="flex flex-col gap-6 justify-center w-full">
+            <li class="text-center">
+              <a
+                class="text-2xl text-center font-medium hover:text-primary transition-colors"
+                href="about.html"
+                >About</a
+              >
+            </li>
+            <li class="text-center">
+              <a
+                class="text-2xl text-center font-medium hover:text-primary transition-colors"
+                href="projects.html"
+                >Projects</a
+              >
+            </li>
+            <li class="text-center">
+              <a
+                class="text-2xl text-center font-medium hover:text-primary transition-colors"
+                href="contact.html"
+                >Contact</a
+              >
+            </li>
+            <li class="text-center">
+              <a
+                href="https://drive.google.com/file/d/1-a7-Jq-gCCzYJcLfU_kHZQaxFk3vUh_W/view?usp=drivesdk"
+              >
+                <button
+                  class="bg-primary hover:bg-primary/90 text-background-dark px-5 py-2 rounded-lg font-bold text-sm transition-all"
+                >
+                  Hire Me
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <a href="index.html">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-3xl"
+              >terminal</span
+            >
+            <span class="text-xl font-bold tracking-tight"
+              >Ismiley<span class="text-primary">Paschal</span></span
+            >
+          </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a
+            class="text-sm font-medium hover:text-primary transition-colors"
+            href="about.html"
+            >About</a
+          >
+          <a
+            class="text-sm font-medium hover:text-primary transition-colors"
+            href="projects.html"
+            >Projects</a
+          >
+          <a
+            class="text-sm font-medium hover:text-primary transition-colors"
+            href="contact.html"
+            >Contact</a
+          >
+          <div class="h-6 w-[1px] bg-slate-200 dark:bg-slate-700 mx-2"></div>
+          <button
+            aria-label="Toggle Dark Mode"
+            class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            id="theme-toggle"
+          >
+            <span class="material-symbols-outlined light-icon text-slate-600"
+              >dark_mode</span
+            >
+            <span class="material-symbols-outlined dark-icon text-yellow-400"
+              >light_mode</span
+            >
+          </button>
+          <a
+            href="https://drive.google.com/file/d/1-a7-Jq-gCCzYJcLfU_kHZQaxFk3vUh_W/view?usp=drivesdk"
+          >
+            <button
+              class="bg-primary hover:bg-primary/90 text-background-dark px-5 py-2 rounded-lg font-bold text-sm transition-all"
+            >
+              Hire Me
+            </button>
+          </a>
+        </nav>
+        <div class="md:hidden lg:hidden">
+          <img
+            class=""
+            id="hamburger"
+            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjMTNiNmVjIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMC43NSA3YS43NS43NSAwIDAgMS0uNzUuNzVINGEuNzUuNzUgMCAwIDEgMC0xLjVoMTZhLjc1Ljc1IDAgMCAxIC43NS43NW0wIDVhLjc1Ljc1IDAgMCAxLS43NS43NUg0YS43NS43NSAwIDAgMSAwLTEuNWgxNmEuNzUuNzUgMCAwIDEgLjc1Ljc1bTAgNWEuNzUuNzUgMCAwIDEtLjc1Ljc1SDRhLjc1Ljc1IDAgMCAxIDAtMS41aDE2YS43NS43NSAwIDAgMSAuNzUuNzUiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg=="
+          />
+        </div>
+      </div>
+    </header>
+    <main class="flex-1 flex flex-col items-center px-6 pt-[100px] pb-12">
+      <div class="max-w-[960px] w-full flex flex-col gap-12">
+        <!-- Heading Section -->
+        <div class="flex flex-col gap-4 text-center md:text-left">
+          <h1
+            class="text-slate-900 dark:text-white text-5xl font-black leading-tight tracking-[-0.033em]"
+          >
+            Get in Touch
+          </h1>
+          <p
+            class="text-slate-600 dark:text-[#9db2b9] text-xl font-normal leading-normal max-w-2xl"
+          >
+            Have a project in mind or just want to say hi? I'm currently open to
+            new opportunities and collaborations.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <!-- Form Side -->
+          <div
+            class="lg:col-span-7 bg-white dark:bg-surface-dark p-8 rounded-xl shadow-xl border border-slate-200 dark:border-border-dark"
+          >
+            <form class="flex flex-col gap-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <label class="flex flex-col gap-2">
+                  <span
+                    class="text-slate-900 dark:text-white text-sm font-semibold"
+                    >Full Name</span
+                  >
+                  <input
+                    class="form-input w-full rounded-lg bg-slate-50 dark:bg-[#16181d] border border-slate-300 dark:border-border-dark text-slate-900 dark:text-white h-14 px-4 placeholder:text-slate-400 dark:placeholder:text-[#9db2b9] focus:outline-none transition-all"
+                    placeholder="John Doe"
+                    type="text"
+                  />
+                </label>
+                <label class="flex flex-col gap-2">
+                  <span
+                    class="text-slate-900 dark:text-white text-sm font-semibold"
+                    >Email Address</span
+                  >
+                  <input
+                    class="form-input w-full rounded-lg bg-slate-50 dark:bg-[#16181d] border border-slate-300 dark:border-border-dark text-slate-900 dark:text-white h-14 px-4 placeholder:text-slate-400 dark:placeholder:text-[#9db2b9] focus:outline-none transition-all"
+                    placeholder="john@example.com"
+                    type="email"
+                  />
+                </label>
+              </div>
+              <label class="flex flex-col gap-2">
+                <span
+                  class="text-slate-900 dark:text-white text-sm font-semibold"
+                  >Subject</span
+                >
+                <input
+                  class="form-input w-full rounded-lg bg-slate-50 dark:bg-[#16181d] border border-slate-300 dark:border-border-dark text-slate-900 dark:text-white h-14 px-4 placeholder:text-slate-400 dark:placeholder:text-[#9db2b9] focus:outline-none transition-all"
+                  placeholder="Project Inquiry"
+                  type="text"
+                />
+              </label>
+              <label class="flex flex-col gap-2">
+                <span
+                  class="text-slate-900 dark:text-white text-sm font-semibold"
+                  >Message</span
+                >
+                <textarea
+                  class="form-input w-full rounded-lg bg-slate-50 dark:bg-[#16181d] border border-slate-300 dark:border-border-dark text-slate-900 dark:text-white min-h-[160px] p-4 placeholder:text-slate-400 dark:placeholder:text-[#9db2b9] focus:outline-none transition-all resize-none"
+                  placeholder="Tell me more about your project goals and timeline..."
+                ></textarea>
+              </label>
+              <button
+                class="mt-2 flex w-full md:w-fit min-w-[180px] items-center justify-center rounded-lg h-14 px-8 bg-primary text-background-dark text-base font-bold tracking-wide hover:brightness-110 transition-all"
+                type="submit"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+          <!-- Sidebar Info -->
+          <div class="lg:col-span-5 flex flex-col gap-10">
+            <!-- Contact Detail Cards -->
+            <div class="flex flex-col gap-6">
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                Contact Details
+              </h3>
+              <div class="flex items-start gap-4">
+                <div
+                  class="flex items-center justify-center size-12 rounded-lg bg-primary/10 text-primary"
+                >
+                  <span class="material-symbols-outlined">alternate_email</span>
+                </div>
+                <div>
+                  <p
+                    class="text-sm font-medium text-slate-500 dark:text-[#9db2b9]"
+                  >
+                    Email Me
+                  </p>
+                  <p class="text-lg font-semibold">ismileytech@gmail.com</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div
+                  class="flex items-center justify-center size-12 rounded-lg bg-primary/10 text-primary"
+                >
+                  <span class="material-symbols-outlined">location_on</span>
+                </div>
+                <div>
+                  <p
+                    class="text-sm font-medium text-slate-500 dark:text-[#9db2b9]"
+                  >
+                    Location
+                  </p>
+                  <p class="text-lg font-semibold">Anambra, NG (Remote)</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div
+                  class="flex items-center justify-center size-12 rounded-lg bg-primary/10 text-primary"
+                >
+                  <span class="material-symbols-outlined">call</span>
+                </div>
+                <div>
+                  <p
+                    class="text-sm font-medium text-slate-500 dark:text-[#9db2b9]"
+                  >
+                    Phone
+                  </p>
+                  <p class="text-lg font-semibold">+234 (90) 6010-3389</p>
+                </div>
+              </div>
+            </div>
+            <!-- Social Connections -->
+            <div class="flex flex-col gap-6">
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                Socials
+              </h3>
+              <div class="flex gap-4">
+                <a
+                  class="group flex items-center justify-center size-12 rounded-lg border border-slate-300 dark:border-border-dark hover:border-primary hover:bg-primary/5 transition-all"
+                  href="https://github.com/Ismailypaschal/"
+                >
+                  <img
+                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjMTNiNmVjIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMiAyQzYuNDc1IDIgMiA2LjQ3NSAyIDEyYTkuOTkgOS45OSAwIDAgMCA2LjgzOCA5LjQ4OGMuNS4wODcuNjg3LS4yMTMuNjg3LS40NzZjMC0uMjM3LS4wMTMtMS4wMjQtLjAxMy0xLjg2MmMtMi41MTIuNDYzLTMuMTYyLS42MTItMy4zNjItMS4xNzVjLS4xMTMtLjI4OC0uNi0xLjE3NS0xLjAyNS0xLjQxM2MtLjM1LS4xODctLjg1LS42NS0uMDEzLS42NjJjLjc4OC0uMDEzIDEuMzUuNzI1IDEuNTM4IDEuMDI1Yy45IDEuNTEyIDIuMzM4IDEuMDg3IDIuOTEyLjgyNWMuMDg4LS42NS4zNS0xLjA4Ny42MzgtMS4zMzdjLTIuMjI1LS4yNS00LjU1LTEuMTEzLTQuNTUtNC45MzhjMC0xLjA4OC4zODctMS45ODcgMS4wMjUtMi42ODdjLS4xLS4yNS0uNDUtMS4yNzUuMS0yLjY1YzAgMCAuODM3LS4yNjMgMi43NSAxLjAyNGE5LjMgOS4zIDAgMCAxIDIuNS0uMzM3Yy44NSAwIDEuNy4xMTIgMi41LjMzN2MxLjkxMi0xLjMgMi43NS0xLjAyNCAyLjc1LTEuMDI0Yy41NSAxLjM3NS4yIDIuNC4xIDIuNjVjLjYzNy43IDEuMDI1IDEuNTg3IDEuMDI1IDIuNjg3YzAgMy44MzgtMi4zMzcgNC42ODgtNC41NjIgNC45MzhjLjM2Mi4zMTIuNjc1LjkxMi42NzUgMS44NWMwIDEuMzM3LS4wMTMgMi40MTItLjAxMyAyLjc1YzAgLjI2Mi4xODguNTc0LjY4OC40NzRBMTAuMDIgMTAuMDIgMCAwIDAgMjIgMTJjMC01LjUyNS00LjQ3NS0xMC0xMC0xMCIvPjwvc3ZnPg=="
+                  />
+                </a>
+                <a
+                  class="group flex items-center justify-center size-12 rounded-lg border border-slate-300 dark:border-border-dark hover:border-primary hover:bg-primary/5 transition-all"
+                  href="https://www.linkedin.com/in/olisa-agu-35857a238/"
+                >
+                  <img
+                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjMTNiNmVjIiBkPSJNMTkgM2EyIDIgMCAwIDEgMiAydjE0YTIgMiAwIDAgMS0yIDJINWEyIDIgMCAwIDEtMi0yVjVhMiAyIDAgMCAxIDItMnptLS41IDE1LjV2LTUuM2EzLjI2IDMuMjYgMCAwIDAtMy4yNi0zLjI2Yy0uODUgMC0xLjg0LjUyLTIuMzIgMS4zdi0xLjExaC0yLjc5djguMzdoMi43OXYtNC45M2MwLS43Ny42Mi0xLjQgMS4zOS0xLjRhMS40IDEuNCAwIDAgMSAxLjQgMS40djQuOTN6TTYuODggOC41NmExLjY4IDEuNjggMCAwIDAgMS42OC0xLjY4YzAtLjkzLS43NS0xLjY5LTEuNjgtMS42OWExLjY5IDEuNjkgMCAwIDAtMS42OSAxLjY5YzAgLjkzLjc2IDEuNjggMS42OSAxLjY4bTEuMzkgOS45NHYtOC4zN0g1LjV2OC4zN3oiLz48L3N2Zz4="
+                  />
+                </a>
+                <a
+                  class="group flex items-center justify-center size-12 rounded-lg border border-slate-300 dark:border-border-dark hover:border-primary hover:bg-primary/5 transition-all"
+                  href="https://x.com/IsmileyPaschal"
+                >
+                  <img
+                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMxM2I2ZWMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Im0xOSA0bC01LjkzIDYuOTNNNSAyMGw1LjkzLTYuOTNtMCAwbDUuNzk1IDYuNTg3Yy4xOS4yMTYuNDgzLjM0My43OTQuMzQzaDEuNDc0Yy44MzYgMCAxLjMwNy0uODUuNzkzLTEuNDM1TDEzLjA3IDEwLjkzbS0yLjE0IDIuMTRMNC4yMTQgNS40MzVDMy43IDQuODUgNC4xNyA0IDUuMDA3IDRoMS40NzRjLjMxIDAgLjYwNC4xMjcuNzk0LjM0M2w1Ljc5NSA2LjU4NyIvPjwvc3ZnPg=="
+                  />
+                </a>
+                <a
+                  class="group flex items-center justify-center size-12 rounded-lg border border-slate-300 dark:border-border-dark hover:border-primary hover:bg-primary/5 transition-all"
+                  href="https://www.facebook.com/paschalolisa.agu/"
+                >
+                  <img
+                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjMTNiNmVjIiBkPSJNMjIgMTJjMC01LjUyLTQuNDgtMTAtMTAtMTBTMiA2LjQ4IDIgMTJjMCA0Ljg0IDMuNDQgOC44NyA4IDkuOFYxNUg4di0zaDJWOS41QzEwIDcuNTcgMTEuNTcgNiAxMy41IDZIMTZ2M2gtMmMtLjU1IDAtMSAuNDUtMSAxdjJoM3YzaC0zdjYuOTVjNS4wNS0uNSA5LTQuNzYgOS05Ljk1Ii8+PC9zdmc+"
+                  />
+                </a>
+              </div>
+            </div>
+            <!-- Mini Map Visual -->
+            <div
+              class="w-full h-40 rounded-xl overflow-hidden border border-slate-300 dark:border-border-dark relative grayscale"
+            >
+              <img
+                class="w-full h-full object-cover"
+                data-alt="Stylized dark minimalist map of San Francisco"
+                data-location="San Francisco"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxgU4dIIUXm00wID2S1iAwaUWidawNGG3Q-VsJjWZDvQBhEWfWRtOa9K3z0MXqOUTHOtlc4zfOOMjEES8_DFFGlthK4nwEAV0qcHnqVeqv0U98RGZn1CXrVkAix0fAKIraASQFEfxTqBlmCITfGzYgPX91SU3XuK9NvVHGjPWX21MroS9XfwAOar_MjB8zuG_e6PGXPRfsC_VJ4_IBuhvwVhG_bRnI1gtO_3PiK2CKPl47wxYr2RsWv8Mr1u6EAIdSo0bG3Pz_7Sul"
+              />
+              <div
+                class="absolute inset-0 bg-primary/10 mix-blend-multiply"
+              ></div>
+              <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              >
+                <div
+                  class="size-6 bg-primary rounded-full border-4 border-white dark:border-background-dark animate-pulse"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-200 dark:border-slate-800">
+      <div
+        class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8"
+      >
+        <a href="index.html">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-2xl"
+              >terminal</span
+            >
+            <span class="font-bold"
+              >Ismiley<span class="text-primary">Paschal</span></span
+            >
+          </div>
+        </a>
+        <p class="text-slate-500 dark:text-slate-400 text-sm">
+          &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Ismileytech Developer. All rights reserved. Crafted with passion.
+        </p>
+        <div
+          class="flex gap-8 text-sm font-medium text-slate-500 dark:text-slate-400"
+        >
+          <a class="hover:text-primary transition-colors" href="privacy.html"
+            >Privacy</a
+          >
+          <a class="hover:text-primary transition-colors" href="terms.html"
+            >Terms</a
+          >
+        </div>
+      </div>
+    </footer>
+    <script>
+      const themeToggleBtn = document.getElementById("theme-toggle");
+      const htmlElement = document.documentElement;
+      themeToggleBtn.addEventListener("click", () => {
+        if (htmlElement.classList.contains("dark")) {
+          htmlElement.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+        } else {
+          htmlElement.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+        }
+      });
+      // Check for saved theme preference or system preference
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        htmlElement.classList.add("dark");
+      } else {
+        htmlElement.classList.remove("dark");
+      }
+    </script>
+    <script src="index.js"></script>
+  </body>
+</html>

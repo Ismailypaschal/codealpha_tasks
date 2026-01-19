@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Visual Gallery</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#13b6ec",
+              "background-light": "#f6f8f8",
+              "background-dark": "#101d22",
+              "surface-dark": "#1c2b30",
+              "surface-hover": "#283539",
+              green: "#22c55e",
+            },
+            fontFamily: {
+              display: ["Plus Jakarta Sans", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Custom scrollbar for horizontal chip lists */
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display min-h-screen flex flex-col overflow-x-hidden selection:bg-primary selection:text-background-dark"
+  >
+    <!-- Top Navigation Bar -->
+    <header
+      class="sticky top-0 z-50 w-full border-b border-[#283539] bg-background-dark/95 backdrop-blur-md"
+    >
+      <div class="px-4 lg:px-8 py-3">
+        <div class="flex items-center justify-between gap-4">
+          <!-- Left: Logo & Title -->
+          <div class="flex items-center gap-2 lg:gap-8 shrink-0">
+            <a
+              class="flex items-center gap-3 text-white hover:text-primary transition-colors"
+              href="#"
+            >
+              <span class="material-symbols-outlined text-4xl text-primary"
+                >photo_library</span
+              >
+              <h1 class="hidden md:block text-xl font-bold tracking-tight">
+                Gallery
+              </h1>
+            </a>
+          </div>
+          <!-- Center: Search Bar (Visible on desktop) -->
+          <!-- <div class="hidden md:flex flex-1 max-w-2xl px-4">
+            <div
+              class="flex w-full items-center rounded-full bg-[#1c2427] border border-[#283539] focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all"
+            >
+              <div class="pl-4 text-[#9db2b9]">
+                <span class="material-symbols-outlined">search</span>
+              </div>
+              <input
+                class="w-full bg-transparent border-none text-white placeholder-[#9db2b9] focus:ring-0 text-sm h-10"
+                placeholder="Search photos, illustrations, vectors..."
+                type="text"
+              />
+            </div>
+          </div> -->
+          <!-- Right: Actions -->
+          <div class="flex items-center gap-3 lg:gap-6 shrink-0">
+            <nav class="hidden lg:flex items-center gap-6">
+              <a
+                class="text-sm font-medium text-[#9db2b9] hover:text-white transition-colors"
+                href="#"
+                >Explore</a
+              >
+              <a
+                class="text-sm font-medium text-[#9db2b9] hover:text-white transition-colors"
+                href="#"
+                >License</a
+              >
+            </nav>
+            <div class="flex items-center gap-3">
+              <button
+                class="hidden sm:flex text-sm font-medium text-[#9db2b9] hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-colors"
+              >
+                Log in
+              </button>
+              <!-- <button class="bg-primary text-background-dark text-sm font-bold px-4 py-2 rounded-full hover:bg-primary/90 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">cloud_upload</span>
+<span class="hidden sm:inline">Upload</span>
+</button> -->
+              <div
+                class="h-9 w-9 rounded-full bg-cover bg-center border border-[#283539] cursor-pointer"
+                data-alt="User profile picture showing a woman smiling"
+                style="
+                  background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDPGysjxp3eDyKI9LGbKe-znSY63n2b3NNBCpE6vPsKaD2CAO74a3l1FvEHBZkf60Ka8g0MCDTSltOtRwhJ37bmN85tOfFUX5fMmmJd0AEUdmZszmjLoIEEOFc4ANGyUHuczOVOqIfIUhlO4VjLmJq-5YYTSCld_9Iw5WVrgZvG4GDv2pSPOJkzq4J_X5SpI346Ijf4opSO3QqZftVovnxlm5Xv6Vs6Mvbjz32UXF6A3sCS-P2uApPWwuOOkeGB-1ddt8UrUabRgljH');
+                "
+              ></div>
+            </div>
+          </div>
+        </div>
+        <!-- Mobile Search (Visible on small screens) -->
+        <div class="md:hidden mt-3">
+          <div
+            class="flex w-full items-center rounded-lg bg-[#1c2427] border border-[#283539]"
+          >
+            <div class="pl-3 text-[#9db2b9]">
+              <span class="material-symbols-outlined text-[20px]">search</span>
+            </div>
+            <input
+              class="w-full bg-transparent border-none text-white placeholder-[#9db2b9] focus:ring-0 text-sm h-10"
+              placeholder="Search images..."
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <main class="flex-1 w-full max-w-[1600px] mx-auto px-4 lg:px-8 py-6">
+      <!-- Hero Section -->
+      <section
+        class="relative rounded-2xl overflow-hidden mb-10 min-h-[400px] flex items-center justify-center bg-cover bg-center"
+        data-alt="Dark moody event background with lights"
+        style="
+          background-image: linear-gradient(
+              rgba(16, 29, 34, 0.6),
+              rgba(16, 29, 34, 0.8)
+            ),
+            url('https://lh3.googleusercontent.com/aida-public/AB6AXuBLSQ2W-eeBauL78Dhxf6QvAEVRe3vsekjwWWdfLeDqsG_QEUkBrE6jhiFgtIScmiaLsMbfNsBwl5nQaTLIPiOdWuknDTS_DcFU6UvEuxUwH3bnnJTIQQKRBSoXuf7Iz5jsYUgF2SxxKtb2grtLKM0kglYwyu3KFJPN6BYzkzXVSqCSOl5GBfp2H2wjRKwHJRKmREtd7j1q-t4mm9tfnJYSR1QOBRR0QaD-oYxt7iUzRqRbYZM6OE86PZR1tgTuwFpnabYF9_fSiO6t');
+        "
+      >
+        <div
+          class="relative z-10 text-center px-4 max-w-3xl mx-auto flex flex-col gap-6"
+        >
+          <h2
+            class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white drop-shadow-lg"
+          >
+            Visual Inspiration
+          </h2>
+          <p
+            class="text-lg text-gray-200 font-medium max-w-xl mx-auto drop-shadow-md"
+          >
+            The internet’s source of freely-usable images.
+            <br class="hidden sm:block" />Powered by creators everywhere.
+          </p>
+          <div class="mt-4 flex w-full flex-col sm:flex-row gap-2">
+            <div class="relative flex-1">
+              <div
+                class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400"
+              >
+                <span class="material-symbols-outlined">search</span>
+              </div>
+              <input
+                class="w-full h-14 pl-12 pr-4 rounded-xl border-none bg-white text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-primary shadow-xl text-lg"
+                placeholder="Search high-resolution images"
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="flex flex-wrap justify-center gap-2 mt-2 text-sm text-gray-300"
+          >
+            <span class="opacity-70">Trending:</span>
+            <a
+              class="hover:text-white hover:underline decoration-primary underline-offset-4"
+              href="#"
+              >Cyberpunk</a
+            >
+            <span class="opacity-50">•</span>
+            <a
+              class="hover:text-white hover:underline decoration-primary underline-offset-4"
+              href="#"
+              >Minimalist</a
+            >
+            <span class="opacity-50">•</span>
+            <a
+              class="hover:text-white hover:underline decoration-primary underline-offset-4"
+              href="#"
+              >Nature</a
+            >
+          </div>
+        </div>
+      </section>
+      <div class="overflow-hidden">
+        <!-- Image Gallery -->
+        <div class="overflow-x-hidden flex gap-6">
+          <!-- Card 1 -->
+          <div
+            class="group relative aspect-[3/4] overflow-hidden rounded-xl bg-surface-dark cursor-zoom-in flex-none w-full md:w-1/4 snap-start"
+          >
+            <img
+              alt="Serene lake landscape with mountains at sunset"
+              class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPvx-8CHKBbaRJMNdMh9hILzLWgHmXRVe9i5qTpHN12ey-ObOC-xZmjfakVVM1i3Q1diomybegySTnwdggZCYHVBCe8Y851Hp8qJV0YrgmvEAOF9La_G-fWRxJuKoCo8p3SHvgcW6S7_mm2mvysZqgK67obU6xCioJpzNZGM7DONiaZiu4xZ2OKZU9i_KZjLXP08yiMppERvvfp3yQyA2GtYv3kKEHvat87XJcrjPeJ3q3FKKy3Ex4-5st6QSIVZZbtkSRTfWT17Hl"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-5"
+            >
+              <div class="flex justify-end">
+                <button
+                  class="h-10 w-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-red-500 transition-colors shadow-lg"
+                >
+                  <span
+                    class="material-symbols-outlined text-[20px] font-variation-settings-filled"
+                    >favorite</span
+                  >
+                </button>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="h-8 w-8 rounded-full bg-gray-300 bg-cover bg-center"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuChW7sSrWtAi5RiK7xGxNDvBnXA0OaCsGWrmkEYLlL2kJitPMQ_sILo4BwXnMXuAjsJQn9GYs1YnwDj4CXHB2uCydztoszUSNPOxbAd3WdA942qUvN_wdDw0CX133aaEUOSmRfcmziUr_nJaTog9kpokS4ltsp3QfX5PNbBdGuiPFwAzTEbmyOyon-PENvTwPxkA9-Fwl4zT8RIFWkQ7EGwHHbRxxBUkBDSpEe5cu9cVVH4IgMOxc0xaiNQv3b3cwKB-piNknklGxbW');
+                    "
+                  ></div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-white leading-tight"
+                      >Leo F.</span
+                    >
+                    <!-- <span class="text-xs text-gray-300">Available for hire</span> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div
+            class="group relative aspect-[3/4] overflow-hidden rounded-xl bg-surface-dark cursor-zoom-in flex-none w-full md:w-1/4 snap-start"
+          >
+            <img
+              alt="Abstract fluid art painting in blue and orange"
+              class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDilPMhCrS0sFj5kDnY5a5irgUpzRE7_I6PVF6MdTfDlUebAWZeY5ZWU2QXp43qDVEs7H7TJFX2sdA4nfjkPXFHcrPGRtc5OwnxNtqwEY-tRh9NZlhjyqhM0CWPkhn1CY6v-Lu04JiXtj7WiSadvUSP8KMjQk9WBDnh3Wgq-HqsZeOoME_zUPnBjyjvuC6KajRzklMRcjTggzDxiNIfDayl7TLa1A9oYOWb7UI8T1YjDCyATY7z0rs5qO1ZyYuB2lwZ0HFAK6tp93pG"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-5"
+            >
+              <div class="flex justify-end">
+                <button
+                  class="h-10 w-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-red-500 transition-colors shadow-lg"
+                >
+                  <span class="material-symbols-outlined text-[20px]"
+                    >favorite</span
+                  >
+                </button>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="h-8 w-8 rounded-full bg-gray-300 bg-cover bg-center"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuChQ9bJgbeaYamrqNutyBN-a_-qvOu-b6TSePzzMRc4JHHxhvh3wV7weLPb7OTb5RPc_uTRaXz_M_WsZLqwsxu_PVsEIdZcA-IUZ_h-o4wOHpxKyhnVGXHwMbu2JydrS69r2XlQZisRi0vuHyGGyFmtZG--GJomgKG-c57zW6RQUbXNo3kb-YFq03obsoAWm_U6OcTC3SVzoZxg34HYtn04vIwpqilXnDS84exlogATZfANGy351JmwBpp1zFkFYaTQUjsCDNxn4nd5');
+                    "
+                  ></div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-white leading-tight"
+                      >Artology</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div
+            class="group relative aspect-[3/4] overflow-hidden rounded-xl bg-surface-dark cursor-zoom-in flex-none w-full md:w-1/4 snap-start"
+          >
+            <img
+              alt="Misty forest with sun rays"
+              class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnvVsFSJFY6LnAhGKBJ_O9lPWk9_OTBjy5aexNh4cpaY3ZGrepU1WQOayQanZQ1SNHgd4xbR15Mr38_iOqNh2lhUFEQ-Tm-cKmTSujI1gx8PFiSFItn37T-w6xzV6ZVlmQAF6kWEjhKgmW5HvJsu8aHOKaIUkUWCv1LSWI8CoYcujCkUimle2Mj-FacsAyMTSpQTIMk5Nd3ZTHkzR-GixO1ilrsmhR20KLbPtLno3rLMFGQNdZ_bdqzYpHTbR93kzpsFTPjv4xEGEn"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-5"
+            >
+              <div class="flex justify-end">
+                <button
+                  class="h-10 w-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-red-500 transition-colors shadow-lg"
+                >
+                  <span class="material-symbols-outlined text-[20px]"
+                    >favorite</span
+                  >
+                </button>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="h-8 w-8 rounded-full bg-gray-300 bg-cover bg-center"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDEWhIokRT7mS5fQqqpysQKCagvEVdFBRCWrMuX21aokmFNfOAf4puSjB2xxvgKi-_DJO7Z8SURemoMarziWRXoTJHqp727Tk5hVRJ_Aw1WvH74nJSVjn3NZeve20oqXsMX_JC0siYEFj-TCzzlVdOqs_MvmBblaZfPrSr-ZTjzTYbIa570MT4_hSpvhUgUy182MFw5yeOob1IqaXLzeczPt9X_Ez5QWADBEO7CmYwNzf2mMnqVFBTzrSfmRENQW2NpUpYvxiRwdCYZ');
+                    "
+                  ></div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-white leading-tight"
+                      >Vartan B.</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div
+            class="group relative aspect-[3/4] overflow-hidden rounded-xl bg-surface-dark cursor-zoom-in flex-none w-full md:w-1/4 snap-start"
+          >
+            <img
+              alt="Microchip technology macro shot"
+              class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuArSb8lTGxilQg59n6ay83s-pPkPuQn0lohGz_MTmzkGnsFR5txO4_V5Pdv2RjmswxsDHKvLAGMnr97wlKVa95hTZKTy9CEu_FIqw44dj7BIzjqLYQxQFwLix-Qz1NeKs8bjqqdUTkn_WavvEgoD3i1_KPCdy4kGH-eLQ4GGDGYkQCFs4mnKdTXfNC4crZoIg-iDBcT5D9vi1znTa_Sx97LUyZDaLh5AyoL0Ujvw7pB99UBRiHizvuc3fFLz-cC1DXV7yOcbXZhwL6k"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-5"
+            >
+              <div class="flex justify-end">
+                <button
+                  class="h-10 w-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-red-500 transition-colors shadow-lg"
+                >
+                  <span class="material-symbols-outlined text-[20px]"
+                    >favorite</span
+                  >
+                </button>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="h-8 w-8 rounded-full bg-gray-300 bg-cover bg-center"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDdjbn_VDk9pE5GR35l0KUyFVI5JMJJzUaMNngGcGF1JJv1oXip2oyuknVfcJylOGAZAVazfWRB8y3KEZq6y_ckyrMao_v1bCFS0g7DEaSJvazsr6oKz_XkvM3w4BBj8jU0AldMErm6VgM5Iy79UeKNYrSVC9BMEmJSCKdPQtUxfvez_Zd8OcE-VDud1bziAkPK1wpseE3W4uPpKaLedkqp2YMWSzr1NHkKSfi7tD6URHeMGBwHie_3X-cPywbGNuJwDNhw0dKCpFqZ');
+                    "
+                  ></div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-white leading-tight"
+                      >TechDaily</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div
+            class="group relative aspect-[3/4] overflow-hidden rounded-xl bg-surface-dark cursor-zoom-in flex-none w-full md:w-1/4 snap-start"
+          >
+            <img
+              alt="Chicago city skyline aerial view"
+              class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0XQjOflay-buLxVL4HNGjeeDSGnqPqGvwK1NCXfVTdknD-qBBBdEy9zbIs3ZsSlmtoP1lo9aTW3ceaePL5VQq7lIv3Gb4ExH43ZmE5wz_CGwXqUHUg-q_J9453OFQ7WWScmx8_B8IKMo_DqYNJLBY_3Uy1gOcZpcjqcUFVThLbH4aSeAKEJG5-x_YMvKETUcx4g8pFKDtwxFfIHGFy9BnCuoLtDTpVcPkDHEkJ6pWufGzIRToIiD5RQ43UUp_Tj3Z-fsWiva-uWOS"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-5"
+            >
+              <div class="flex justify-end">
+                <button
+                  class="h-10 w-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-red-500 transition-colors shadow-lg"
+                >
+                  <span class="material-symbols-outlined text-[20px]"
+                    >favorite</span
+                  >
+                </button>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="h-8 w-8 rounded-full bg-gray-300 bg-cover bg-center"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBdd4vH8gHp_ZpgU8hu8-gcNrFgYPftSgfXgdfehx360aj3foViUUYYzNCDpBzZC5gsLZo_lY0UAMX7VD5an9DO-beXlSAIQjDiz71yFodm2YFYkszoo-6vTZpi0iQYB4pSEfHgR4SUcNaoW8CLLNRussuEdGH772ijEon7PBuji2uBAhgEkokUI_GHHwpJRzO7UhzAXT4fzPfnrnRwGnGY3EUO1NPAROAw7xqjsngP1ixcX3H2VSu8RcRHgG44bRE3oErKJWTrtsaM');
+                    "
+                  ></div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-white leading-tight"
+                      >UrbanEx</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div
+            class="group relative aspect-[3/4] overflow-hidden rounded-xl bg-surface-dark cursor-zoom-in flex-none w-full md:w-1/4 snap-start"
+          >
+            <img
+              alt="3D Abstract geometric shapes in pink and blue"
+              class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPHtu0F14P-Nt0uP_KzjtWwyp1QU23YtBLDWF4NkZrOc8hjXKcMvHyIC_twwbAtTLhkc1kkxgN9_q6DIBuHcHn-L28gLEZScMxd-GSzHTAGuYjBis_cXWDTMhnk1rhfOKB-2SjeR1F1ebVLd5zBxT-5MsHu_lnsW25o6giTb3jN88g67x5qBmjsRbF0TZowxQoj1CBC6jop50c_-bUp_nFwDQb9JUy2jh4IQgzev0WKfiCdJoEUwru5kpTr8p5LPPdMXXso-fAQqId"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-5"
+            >
+              <div class="flex justify-end">
+                <button
+                  class="h-10 w-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-red-500 transition-colors shadow-lg"
+                >
+                  <span class="material-symbols-outlined text-[20px]"
+                    >favorite</span
+                  >
+                </button>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="h-8 w-8 rounded-full bg-gray-300 bg-cover bg-center"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2VYj97Kc7SS-wktZzYKcztJZDUsDAIGqYUj7YaGLfNqD0vl-ugnGhJXHo9C6ephoA5FMYyOh3MKVrmrgU0UxHiDGFyoZdwBF_NInyV_Wp-2me1aUX3_2X6n8qb862iEWruQKkwGg5WHPrnNIEcBVOe9BgATI_Y59y0NlFiP-el2snwkE1itfHyLAjPHnY8uLEJYIMNqVIFxsgFdzTcyq_6M0mT-8TFC-_k6VarEWkVtCCJgjryNZ1hku69qJmFagNTnx9Nwl72EGR');
+                    "
+                  ></div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-white leading-tight"
+                      >RenderLab</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div
+            class="group relative aspect-[3/4] overflow-hidden rounded-xl bg-surface-dark cursor-zoom-in flex-none w-full md:w-1/4 snap-start"
+          >
+            <img
+              alt="Minimalist iPhone mockup on desk"
+              class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAECF2Dwt5fuqdMtkwA2cUVU64vtr1A3231Qn4CKDYTIDHrvj4IvY7AUOJwZiXIYxfCDhr9KvnBr1yXpN0-KVRwkyvx16wzhNn-hAhwwJl0vQm8VNUJaBABSy5dvoBrYpXEGK6n-5FMEBOmz7gAx4-xYlze0weO9W4ko6Y2uPhMg_hanMZUj7oZnTj-iTg8qXHvvlwlIBT1Gy5qpwDAYGl5SQDmB312HPvSn8xB-neMeEk4Oh5DDBMD5ld6iP4Xc8KL9Uw4Xc-mYHOp"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-5"
+            >
+              <div class="flex justify-end">
+                <button
+                  class="h-10 w-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-red-500 transition-colors shadow-lg"
+                >
+                  <span class="material-symbols-outlined text-[20px]"
+                    >favorite</span
+                  >
+                </button>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="h-8 w-8 rounded-full bg-gray-300 bg-cover bg-center"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCXaSmU3rKYdQgDTnZD1lRa1maS9q15odkmeSNr4-nJQVlm5vwUMOLw-sAT4A8fO1648JlQLX4eGxkMjqSXzuluhUe4BShivszUpW23hTXh8hY6x08QDvRZhjEIv-ujs1-KfwrPP3IXoF3g5SxPZjqbb_ieTGikCv_k1G1edCzGwotWGg1sNNdVOodNf6x5ATUdkUj5rW3T_b93hV2jnn0nf3K9I-hWZvHdCJlJvjKh7xO_kcMqYN_BPqL2lopxgAXYdq9g_rIcDfcO');
+                    "
+                  ></div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-white leading-tight"
+                      >MockupKing</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 8 -->
+          <div
+            class="group relative aspect-[3/4] overflow-hidden rounded-xl bg-surface-dark cursor-zoom-in flex-none w-full md:w-1/4 snap-start"
+          >
+            <img
+              alt="Red Nike sneaker product shot"
+              class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuANCOJ57WomWeB-2dE-6JyNCRxVRi1jMjrU39ovdei_OawbQIq7yDN_aRqfU3RzooNoGoOLT_VA7cPOX6QV4HcoQyteTYVBAwJDHxDnb2PeQpjMWIfjbwFID29HLG2fFxq-Fe8z99c4VbihF_qubMtxWIiuAI1cypobGwjjAcFeorthDNEzXeTobeS30kifaTH3yuQ1OTHH9Ugl1c70CyIgHCLZoZGLoGHzHSgu8p9SxLImwZLJvYKUDCAPD1MybwulJfKxsnrUwo9q"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-5"
+            >
+              <div class="flex justify-end">
+                <button
+                  class="h-10 w-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-red-500 transition-colors shadow-lg"
+                >
+                  <span class="material-symbols-outlined text-[20px]"
+                    >favorite</span
+                  >
+                </button>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="h-8 w-8 rounded-full bg-gray-300 bg-cover bg-center"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCiBUwJ7mlq4-5j0t_ny-04rSTJQFKhQDw1nK_wLsT_9K3N3WrLcHPHcps83iITMBUm6nXjGxeSTtROvHbdjvd0JdF6AhvqASdmTJS9mgcD233tICPHYGn1yuufJdpCirROyYb6dHI4cIJZrBqm7CAROHMbuhuZnDAdmsnZFo7FxvGc9RdFp407LRkLvEYEaKXVpW4B5UJ4LaKcSu-faTBOjUNeMFOrknPWAOdpKY5bnUP_l0Agvu_B6l8o9FZFZ2uqLA1fA5LAfOfN');
+                    "
+                  ></div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-white leading-tight"
+                      >SneakerHead</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="mt-16 flex justify-center pb-10">
+          <div class="flex items-center gap-2">
+            <button
+              id="prev"
+              class="flex h-10 w-10 items-center justify-center rounded-lg border border-[#283539] text-gray-400 hover:bg-surface-dark hover:text-primary transition-colors"
+              disabled=""
+            >
+              <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <button
+              id="next"
+              class="flex h-10 w-10 items-center justify-center rounded-lg border border-[#283539] text-white hover:bg-surface-dark hover:text-primary transition-colors"
+            >
+              <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Simple Footer -->
+    <footer class="border-t border-[#283539] bg-background-dark py-8 px-4">
+      <div
+        class="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6"
+      >
+        <div class="flex items-center gap-2 text-white">
+          <span class="material-symbols-outlined text-primary"
+            >photo_library</span
+          >
+          <span class="font-bold">Gallery</span>
+        </div>
+        <div class="flex gap-6 text-sm text-[#9db2b9]">
+          <a class="hover:text-white" href="#">Privacy Policy</a>
+          <a class="hover:text-white" href="#">Terms & Condition</a>
+          <a class="hover:text-white" href="#">Cookies</a>
+        </div>
+        <p class="text-sm text-[#5d6b70]">
+          ©
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Visual Gallery. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <div
+      id="lightBox"
+      class="hidden flex-col justify-center items-center h-screen w-full fixed top-0 left-0 w-full bg-black z-[9999]"
+    >
+      <button
+        type="button"
+        id="close"
+        class="absolute top-0 lg:top-10 text-[#fff] hover:text-green-500 text-3xl right-2 cursor-pointer z-[10000]"
+      >
+        &times;</button
+      ><img
+        id="lightBoxCon"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuANCOJ57WomWeB-2dE-6JyNCRxVRi1jMjrU39ovdei_OawbQIq7yDN_aRqfU3RzooNoGoOLT_VA7cPOX6QV4HcoQyteTYVBAwJDHxDnb2PeQpjMWIfjbwFID29HLG2fFxq-Fe8z99c4VbihF_qubMtxWIiuAI1cypobGwjjAcFeorthDNEzXeTobeS30kifaTH3yuQ1OTHH9Ugl1c70CyIgHCLZoZGLoGHzHSgu8p9SxLImwZLJvYKUDCAPD1MybwulJfKxsnrUwo9q"
+        alt="lightBoxImage"
+        class="w-[90%] max-w-[568px] h-[80%] max-h-[520px] my-40 lg:my-0 rounded-[8px] object-cover"
+      />
+      <div id="caption" class="">Image</div>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>

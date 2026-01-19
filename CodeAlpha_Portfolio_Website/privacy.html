@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Personal Portfolio Home</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#13b6ec",
+              "background-light": "#f6f8f8",
+              "background-dark": "#101d22",
+              "surface-dark": "#1c1e20",
+              "border-dark": "#262a2e",
+              "text-muted": "#959BA1",
+              "text-bright": "#E0E3E6",
+              "card-dark": "#161b1e",
+            },
+            fontFamily: {
+              display: ["Inter"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .project-card:hover .project-title {
+        color: #13b6ec;
+      }
+      .project-card:hover {
+        transform: translateY(-4px);
+        transition: all 0.3s ease;
+      }
+    </style>
+    <style type="text/tailwindcss">
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      #theme-toggle .light-icon {
+        display: block;
+      }
+      #theme-toggle .dark-icon {
+        display: none;
+      }
+      .dark #theme-toggle .light-icon {
+        display: none;
+      }
+      .dark #theme-toggle .dark-icon {
+        display: block;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-300"
+  >
+    <!-- Top Navigation Bar -->
+    <header
+      class="fixed top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between"
+      >
+        <!-- Mobile component -->
+        <div
+          class="hidden md:hidden lg:hidden w-[90vw] flex flex-col justify-center absolute py-10 top-[75px] left-6 z-100000 bg-[#161b1e] font-display text-white rounded-xl"
+          id="mobile_menu"
+        >
+          <ul class="flex flex-col gap-6 justify-center w-full">
+            <li class="text-center">
+              <a
+                class="text-2xl text-center font-medium hover:text-primary transition-colors"
+                href="about.html"
+                >About</a
+              >
+            </li>
+            <li class="text-center">
+              <a
+                class="text-2xl text-center font-medium hover:text-primary transition-colors"
+                href="projects.html"
+                >Projects</a
+              >
+            </li>
+            <li class="text-center">
+              <a
+                class="text-2xl text-center font-medium hover:text-primary transition-colors"
+                href="contact.html"
+                >Contact</a
+              >
+            </li>
+            <li class="text-center">
+              <a
+                href="https://drive.google.com/file/d/1-a7-Jq-gCCzYJcLfU_kHZQaxFk3vUh_W/view?usp=drivesdk"
+              >
+                <button
+                  class="bg-primary hover:bg-primary/90 text-background-dark px-5 py-2 rounded-lg font-bold text-sm transition-all"
+                >
+                  Hire Me
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <a href="index.html">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-3xl"
+              >terminal</span
+            >
+            <span class="text-xl font-bold tracking-tight"
+              >Ismiley<span class="text-primary">Paschal</span></span
+            >
+          </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a
+            class="text-sm font-medium hover:text-primary transition-colors"
+            href="about.html"
+            >About</a
+          >
+          <a
+            class="text-sm font-medium hover:text-primary transition-colors"
+            href="projects.html"
+            >Projects</a
+          >
+          <a
+            class="text-sm font-medium hover:text-primary transition-colors"
+            href="contact.html"
+            >Contact</a
+          >
+          <div class="h-6 w-[1px] bg-slate-200 dark:bg-slate-700 mx-2"></div>
+          <button
+            aria-label="Toggle Dark Mode"
+            class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            id="theme-toggle"
+          >
+            <span class="material-symbols-outlined light-icon text-slate-600"
+              >dark_mode</span
+            >
+            <span class="material-symbols-outlined dark-icon text-yellow-400"
+              >light_mode</span
+            >
+          </button>
+          <a
+            href="https://drive.google.com/file/d/1-a7-Jq-gCCzYJcLfU_kHZQaxFk3vUh_W/view?usp=drivesdk"
+          >
+            <button
+              class="bg-primary hover:bg-primary/90 text-background-dark px-5 py-2 rounded-lg font-bold text-sm transition-all"
+            >
+              Hire Me
+            </button>
+          </a>
+        </nav>
+        <div class="md:hidden lg:hidden">
+          <img
+            class=""
+            id="hamburger"
+            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjMTNiNmVjIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMC43NSA3YS43NS43NSAwIDAgMS0uNzUuNzVINGEuNzUuNzUgMCAwIDEgMC0xLjVoMTZhLjc1Ljc1IDAgMCAxIC43NS43NW0wIDVhLjc1Ljc1IDAgMCAxLS43NS43NUg0YS43NS43NSAwIDAgMSAwLTEuNWgxNmEuNzUuNzUgMCAwIDEgLjc1Ljc1bTAgNWEuNzUuNzUgMCAwIDEtLjc1Ljc1SDRhLjc1Ljc1IDAgMCAxIDAtMS41aDE2YS43NS43NSAwIDAgMSAuNzUuNzUiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg=="
+          />
+        </div>
+      </div>
+    </header>
+    <main class="flex flex-1 justify-center pt-[100px] pb-12 px-4">
+      <div class="layout-content-container flex flex-col max-w-[800px] flex-1">
+        <!-- Page Heading -->
+        <div class="flex flex-wrap justify-between items-end gap-3 mb-8">
+          <div class="flex min-w-72 flex-col gap-2">
+            <h1
+              class="text-[#121617] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em] font-display"
+            >
+              Legal Information
+            </h1>
+            <p
+              class="text-[#658086] dark:text-gray-500 text-base font-normal leading-normal"
+            >
+              Version 2.1 • Last Updated: January 14, 2026
+            </p>
+          </div>
+        </div>
+        <!-- Tabs for Section Navigation -->
+        <div class="pb-6">
+          <div
+            class="flex border-b border-[#dce3e5] dark:border-gray-800 gap-8"
+          >
+            <a
+              class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-[13px] pt-4"
+              href="privacy.html"
+            >
+              <p class="text-sm font-bold leading-normal tracking-[0.015em]">
+                Privacy Policy
+              </p>
+            </a>
+            <a
+              class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#658086] hover:text-[#121617] dark:hover:text-white pb-[13px] pt-4 transition-colors"
+              href="terms.html"
+            >
+              <p class="text-sm font-bold leading-normal tracking-[0.015em]">
+                Terms of Service
+              </p>
+            </a>
+          </div>
+        </div>
+        <!-- Privacy Policy Content -->
+        <article
+          class="legal-content bg-white dark:bg-gray-900/50 p-8 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm mb-12"
+          id="privacy"
+        >
+          <div
+            class="bg-primary/5 dark:bg-primary/10 border-l-4 border-primary p-6 rounded-r-lg mb-8"
+          >
+            <p
+              class="text-primary font-bold mb-1 uppercase tracking-wider text-xs"
+            >
+              Privacy Commitment
+            </p>
+            <p class="text-[#121617] dark:text-gray-300 font-medium m-0 italic">
+              "I value your privacy as much as my own. I do not sell your
+              personal data, nor do I use it for anything other than providing
+              the best possible experience on this site."
+            </p>
+          </div>
+          <h2>1. Information Collection</h2>
+          <p>
+            When you visit this portfolio, certain information is collected
+            automatically to ensure the site functions correctly and to analyze
+            visitor engagement.
+          </p>
+          <ul>
+            <li>
+              <strong>Device Information:</strong> Browser type, operating
+              system, and screen resolution.
+            </li>
+            <li>
+              <strong>Log Data:</strong> IP addresses, access times, and pages
+              viewed.
+            </li>
+            <li>
+              <strong>Contact Data:</strong> Name and email address, only if
+              provided via the contact form.
+            </li>
+          </ul>
+          <h2>2. How I Use Your Information</h2>
+          <p>The information collected is used for the following purposes:</p>
+          <ul>
+            <li>To operate and maintain the website features.</li>
+            <li>To respond to your inquiries or project requests.</li>
+            <li>To monitor and analyze trends and usage.</li>
+            <li>
+              To protect against unauthorized access or fraudulent activity.
+            </li>
+          </ul>
+          <h2>3. Cookies and Tracking</h2>
+          <p>
+            This site uses essential cookies to remember your preferences (like
+            dark mode). I use privacy-friendly analytics (e.g., Fathom or
+            Plausible) that do not track you across other websites.
+          </p>
+          <h3>Third-Party Services</h3>
+          <p>
+            I may use third-party services such as Google Fonts or Vercel for
+            hosting. These providers may process your IP address as part of
+            serving the website content.
+          </p>
+          <h2>4. Data Protection</h2>
+          <p>
+            I implement industry-standard security measures to protect your
+            information. However, please note that no method of transmission
+            over the internet is 100% secure.
+          </p>
+        </article>
+        <!-- Terms of Service Content -->
+        <article
+          class="legal-content bg-white dark:bg-gray-900/50 p-8 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm"
+          id="terms"
+        >
+          <h2 class="!mt-0">Terms of Service</h2>
+          <p>
+            By accessing this website, you agree to be bound by these terms of
+            service and comply with all applicable laws and regulations.
+          </p>
+          <h3>Intellectual Property</h3>
+          <p>
+            The content, design, code, and graphics on this portfolio are owned
+            by the creator unless otherwise stated. You may not reproduce,
+            distribute, or create derivative works without express written
+            permission.
+          </p>
+          <h3>Acceptable Use</h3>
+          <p>
+            You agree not to use this site for any unlawful purpose or any
+            purpose prohibited under this clause. You agree not to use this site
+            in any way that could damage the website or general business of the
+            owner.
+          </p>
+          <h3>Limitation of Liability</h3>
+          <p>
+            The materials on this website are provided on an 'as is' basis. I
+            make no warranties, expressed or implied, and hereby disclaim all
+            other warranties including, without limitation, implied warranties
+            or conditions of merchantability.
+          </p>
+          <h3>Governing Law</h3>
+          <p>
+            These terms and conditions are governed by and construed in
+            accordance with the laws of the jurisdiction in which the owner
+            resides.
+          </p>
+          <div
+            class="mt-12 pt-8 border-t border-gray-100 dark:border-gray-800 flex flex-col items-center"
+          >
+            <p class="text-sm text-gray-400 mb-4">
+              Questions about these terms?
+            </p>
+            <a
+              class="inline-flex items-center gap-2 text-primary font-bold hover:underline"
+              href="mailto:hello@example.com"
+            >
+              <span class="material-symbols-outlined text-sm">mail</span>
+              Get in touch regarding legal inquiries
+            </a>
+          </div>
+        </article>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-200 dark:border-slate-800">
+      <div
+        class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8"
+      >
+        <a href="index.html">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-2xl"
+              >terminal</span
+            >
+            <span class="font-bold"
+              >Ismiley<span class="text-primary">Paschal</span></span
+            >
+          </div>
+        </a>
+        <p class="text-slate-500 dark:text-slate-400 text-sm">
+          &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Ismileytech Developer. All rights reserved. Crafted with passion.
+        </p>
+        <div
+          class="flex gap-8 text-sm font-medium text-slate-500 dark:text-slate-400"
+        >
+          <a class="hover:text-primary transition-colors" href="privacy.html"
+            >Privacy</a
+          >
+          <a class="hover:text-primary transition-colors" href="terms.html"
+            >Terms</a
+          >
+        </div>
+      </div>
+    </footer>
+    <script>
+      const themeToggleBtn = document.getElementById("theme-toggle");
+      const htmlElement = document.documentElement;
+      themeToggleBtn.addEventListener("click", () => {
+        if (htmlElement.classList.contains("dark")) {
+          htmlElement.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+        } else {
+          htmlElement.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+        }
+      });
+      // Check for saved theme preference or system preference
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        htmlElement.classList.add("dark");
+      } else {
+        htmlElement.classList.remove("dark");
+      }
+    </script>
+    <script src="index.js"></script>
+  </body>
+</html>
