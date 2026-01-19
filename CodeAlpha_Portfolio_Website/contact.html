@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html class="dark" lang="en">
   <head>
@@ -50,7 +50,11 @@
     </style>
     <style type="text/tailwindcss">
       .material-symbols-outlined {
-        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
       }
       html {
         scroll-behavior: smooth;
@@ -198,7 +202,12 @@
           <div
             class="lg:col-span-7 bg-white dark:bg-surface-dark p-8 rounded-xl shadow-xl border border-slate-200 dark:border-border-dark"
           >
-            <form class="flex flex-col gap-6">
+            <form
+              class="flex flex-col gap-6"
+              action="mailto:ismileytech@gmail.com"
+              method="post"
+              enctype="text/plain"
+            >
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label class="flex flex-col gap-2">
                   <span
@@ -228,11 +237,18 @@
                   class="text-slate-900 dark:text-white text-sm font-semibold"
                   >Subject</span
                 >
-                <input
+                <select
+                  class="form-input w-full rounded-lg bg-slate-50 dark:bg-[#16181d] border border-slate-300 dark:border-border-dark text-slate-900 dark:text-white h-14 px-4 placeholder:text-slate-400 dark:placeholder:text-[#9db2b9] focus:outline-none transition-all"
+                >
+                  <option>New Project Inquiry</option>
+                  <option>Job Opportunity</option>
+                  <option>Just Saying Hi</option>
+                </select>
+                <!-- <input
                   class="form-input w-full rounded-lg bg-slate-50 dark:bg-[#16181d] border border-slate-300 dark:border-border-dark text-slate-900 dark:text-white h-14 px-4 placeholder:text-slate-400 dark:placeholder:text-[#9db2b9] focus:outline-none transition-all"
                   placeholder="Project Inquiry"
                   type="text"
-                />
+                /> -->
               </label>
               <label class="flex flex-col gap-2">
                 <span
